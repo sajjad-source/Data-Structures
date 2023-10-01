@@ -1,0 +1,33 @@
+
+Test with null counters, good key...
+
+Test counters_get with null counters...
+counters_get with null counters returned zero as expected.
+
+Test counters_set with null counters...
+
+Inserting numbers from test.integers into the counters...
+
+Counters after insertion:
+{10=2,9=1,8=1,7=1,6=1,5=5,4=4,3=3,2=2,1=1,}
+
+Setting the count for key 5 to 20...
+Count for 5: 20
+
+Testing invalid keys...
+Setting count for negtiave key -1...
+Count for -1: 0
+
+Testing counters_get function...
+Count for 1: 1
+Count for 2: 2
+Count for 3: 3
+Count for 4: 4
+Count for 5: 20
+Count for 6: 1
+Count for 7: 1
+Count for 8: 1
+Count for 9: 1
+Count for 10: 2
+
+Deleting the counters...
