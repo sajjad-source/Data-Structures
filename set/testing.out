@@ -1,0 +1,23 @@
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib   -c -o settest.o settest.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib   -c -o set.o set.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib settest.o set.o ../lib/file.o ../lib/mem.o  -o settest
+./settest < test.names
+
+Test with null set, good key/item...
+Test with good set, null key...
+Test with good set, null item...
+Test with null set, null key...
+
+Inserting items from input...
+
+Iterating over the set...
+Iterate: John = John
+Iterate: Ringo = Ringo
+Iterate: George = George
+Iterate: Mary = Mary
+Iterate: Paul = Paul
+Iterate: Peter = Peter
+
+The set:
+{John=John,Ringo=Ringo,George=George,Mary=Mary,Paul=Paul,Peter=Peter,}
+Deleting the set...

@@ -75,7 +75,15 @@ bool set_insert(set_t* set, const char* key, void* item)
         return false;                                   // Error duplicating the key
     }
 
-    new_node->item = item;                              // Set the item
+    char* item_dup = malloc(strlen(item) + 1);          // Duplicate the item
+    new_node->item = strcpy(item_dup, item);            // Insert the duplicate item
+    if (new_node->item == NULL)
+    {
+        free(new_node->key);
+        free(new_node);
+        return false;                                   // Error duplicating the item
+    }
+                        
     new_node->next = set->head;                         // Insert new node at the head of the list
     set->head = new_node;
 
