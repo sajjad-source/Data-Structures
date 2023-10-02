@@ -67,8 +67,13 @@ bool set_insert(set_t* set, const char* key, void* item)
         return false;                                   // Error allocating memory for new node
     }
 
-    char* dup = malloc(strlen(key) + 1);                // Create a duplicate of key
-    new_node->key = strcpy(dup, key);                   // Insert the duplicate key
+    char* key_dup = malloc(strlen(key) + 1);                // Create a duplicate of key
+    if (key_dup == NULL)
+    {
+        return false;
+    }
+    
+    new_node->key = strcpy(key_dup, key);                   // Insert the duplicate key
     if (new_node->key == NULL)
     {
         free(new_node);
@@ -76,6 +81,11 @@ bool set_insert(set_t* set, const char* key, void* item)
     }
 
     char* item_dup = malloc(strlen(item) + 1);          // Duplicate the item
+    if (item_dup == NULL)
+    {
+        return false;
+    }
+    
     new_node->item = strcpy(item_dup, item);            // Insert the duplicate item
     if (new_node->item == NULL)
     {

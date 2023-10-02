@@ -36,7 +36,7 @@ int main()
     printf("Test with good set, null item...\n");
     set_insert(set, "Key", NULL);
 
-    printf("Test with null set, null key...\n");
+    printf("Test with null set, null key, null item...\n");
     set_insert(NULL, NULL, NULL);
 
     // Inserting items from input
