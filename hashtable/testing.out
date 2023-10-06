@@ -1,0 +1,53 @@
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib -I../set   -c -o hashtabletest.o hashtabletest.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib -I../set   -c -o hashtable.o hashtable.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib -I../set   -c -o hash.o hash.c
+gcc -Wall -pedantic -std=c11 -ggdb  -I../lib -I../set hashtabletest.o hashtable.o ../lib/file.o ../lib/mem.o ../set/set.o hash.o  -o hashtabletest
+./hashtabletest
+Creating an empty hashtable of size 5...
+Expected: 
+{}
+{}
+{}
+{}
+{}
+Got:
+{}
+{}
+{}
+{}
+{}
+---------------------------------------------
+Inserting key-value pairs...
+Expected: 
+... (arrangement of Dartmouth, Hanover, CS50, CS10, CS1)
+Got:
+{(CS50, Software Design)}
+{(CS1, Introduction to Computer Science)}
+{(CS10, Object-Oriented Programming)}
+{(Hanover, Town),(Dartmouth, College)}
+{}
+---------------------------------------------
+Inserting duplicate key 'CS50'...
+Expected: 
+... (should still only have one 'CS50')
+Got:
+{(CS50, Software Design)}
+{(CS1, Introduction to Computer Science)}
+{(CS10, Object-Oriented Programming)}
+{(Hanover, Town),(Dartmouth, College)}
+{}
+---------------------------------------------
+Finding item with key 'Dartmouth'...
+Expected: College
+Got: College
+---------------------------------------------
+Finding item with non-existing key 'Harvard'...
+Expected: (null)
+Got: (null)
+---------------------------------------------
+Expected: 5 items in the hashtable.
+Got: 5 items in the hashtable.
+---------------------------------------------
+Deleting the hashtable...
+Hashtable deleted.
+---------------------------------------------

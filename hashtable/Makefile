@@ -16,12 +16,11 @@ hashtable.o: hashtable.h
 
 .PHONY: test valgrind clean
 
-# expects a file `test.names` to exist; it can contain any text.
-test: hashtabletest test.names
-	./hashtabletest < test.names
+test: hashtabletest
+	./hashtabletest
 
-valgrind: hashtabletest test.names
-	$(VALGRIND) ./hashtabletest < test.names
+valgrind: hashtabletest
+	$(VALGRIND) ./hashtabletest
 
 clean:
 	rm -rf *.dSYM

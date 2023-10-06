@@ -114,13 +114,15 @@ void hashtable_print(hashtable_t* ht, FILE* fp, void (*itemprint)(FILE* fp, cons
         {
             for (int i = 0; i < ht->num_slots; i++)
             {
-                set_print(ht->arr[i], fp, itemprint);       // Loop through every slot in hashtable, and print the set that it points to.
+                set_print(ht->arr[i], fp, itemprint);       // Print the set
+                fputc('\n', fp);                            // Add newline after each set
             }
         } else {
-            fputs("(null)", fp);
+            fputs("(null)\n", fp);
         }
     }
 }
+
 
 /**************** hashtable_iterate() ****************/
 /* see hashtable.h for description */

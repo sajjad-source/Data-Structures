@@ -11,74 +11,95 @@
 #include <stdlib.h>
 #include <string.h>
 #include "hashtable.h"
-#include "../lib/file.h"
 
-static void keyitemprint(FILE* fp, const char* key, void* item);
-static void itemdelete(void* item);
-void iterate_print(void* arg, const char* key, void* item);
+static void print_sets(FILE *fp, const char *key, void *item);
+static void item_func(void *arg, const char *key, void *item);
+static void item_delete(void *item);
 
 int main()
 {
-    char* name;
-    hashtable_t* ht = hashtable_new(10);
-    if (ht == NULL)
-    {
-        fprintf(stderr, "hashtable_new failed\n");
-        return 1;
-    }
+    hashtable_t *ht;
 
-    printf("\nTest with null hashtable, good key/item...\n");
-    hashtable_insert(NULL, "Key", "Item");
+    // Test: Create a new hashtable
+    ht = hashtable_new(5);
+    printf("Creating an empty hashtable of size 5...\n");
+    printf("Expected: \n{}\n{}\n{}\n{}\n{}\n");
+    printf("Got:\n");
+    hashtable_print(ht, stdout, print_sets);
+    printf("---------------------------------------------\n");
 
-    printf("Test with good hashtable, null key...\n");
-    hashtable_insert(ht, NULL, "Item");
+    // Test: Insert items
+    printf("Inserting key-value pairs...\n");
+    hashtable_insert(ht, "Dartmouth", "College");
+    hashtable_insert(ht, "Hanover", "Town");
+    hashtable_insert(ht, "CS50", "Software Design");
+    hashtable_insert(ht, "CS10", "Object-Oriented Programming");
+    hashtable_insert(ht, "CS1", "Introduction to Computer Science");
+    printf("Expected: \n... (arrangement of Dartmouth, Hanover, CS50, CS10, CS1)\n");
+    printf("Got:\n");
+    hashtable_print(ht, stdout, print_sets);
+    printf("---------------------------------------------\n");
 
-    printf("Test with good hashtable, null item...\n");
-    hashtable_insert(ht, "Key", NULL);
+    // Test: Attempt to insert a duplicate key
+    printf("Inserting duplicate key 'CS50'...\n");
+    hashtable_insert(ht, "CS50", "Duplicate Course");
+    printf("Expected: \n... (should still only have one 'CS50')\n");
+    printf("Got:\n");
+    hashtable_print(ht, stdout, print_sets);
+    printf("---------------------------------------------\n");
 
-    printf("Test with null hashtable, null key, null item...\n");
-    hashtable_insert(NULL, NULL, NULL);
+    // Test: Find an item
+    printf("Finding item with key 'Dartmouth'...\n");
+    printf("Expected: College\n");
+    printf("Got: %s\n", (char *)hashtable_find(ht, "Dartmouth"));
+    printf("---------------------------------------------\n");
 
-    // Inserting items from input
-    printf("\nInserting items from input...\n");
-    while (!feof(stdin)) 
-    {
-        name = file_readLine(stdin);
-        if (name != NULL) 
-        {
-            hashtable_insert(ht, name, name);
-            free(name);
-        }
-    }
-    
-    printf("\nIterating over the hashtable...\n");
-    hashtable_iterate(ht, NULL, iterate_print);
+    // Test: Attempt to find an item with a non-existing key
+    printf("Finding item with non-existing key 'Harvard'...\n");
+    printf("Expected: (null)\n");
+    printf("Got: %s\n", (char *)hashtable_find(ht, "Harvard"));
+    printf("---------------------------------------------\n");
 
-    // Printing the set
-    printf("\nThe hashtable:\n");
-    hashtable_print(ht, stdout, keyitemprint);
+    // Test: Count items in hashtable
+    int item_count = 0;
+    hashtable_iterate(ht, &item_count, item_func);
+    printf("Expected: 5 items in the hashtable.\n");
+    printf("Got: %d items in the hashtable.\n", item_count);
+    printf("---------------------------------------------\n");
 
-    // Cleanup
-    printf("\nDeleting the hashtable...\n");
-    hashtable_delete(ht, itemdelete);
+    // Test: Delete the hashtable
+    printf("Deleting the hashtable...\n");
+    hashtable_delete(ht, item_delete);
+    printf("Hashtable deleted.\n");
+    printf("---------------------------------------------\n");
 
     return 0;
 }
 
-void keyitemprint(FILE* fp, const char* key, void* item)
+static void print_sets(FILE *fp, const char *key, void *item)
 {
-    printf("%s=%s", key, (char*)item);
-}
-
-void itemdelete(void* item)
-{
-    if (item != NULL) 
+    char *value = item;
+    if (value == NULL)
     {
-        free(item);
+        fprintf(fp, "(null)");
+    } else {
+        fprintf(fp, "(%s, %s)", key, value);
     }
 }
 
-void iterate_print(void* arg, const char* key, void* item) 
+static void item_func(void *arg, const char *key, void *item)
 {
-    printf("Iterate: %s = %s\n", key, (char*)item);
+    int *nkeys = arg;
+    if (nkeys != NULL && key != NULL && item != NULL)
+    {
+        (*nkeys)++;
+    }
+}
+
+static void item_delete(void *item)
+{
+    if (item != NULL)
+    {
+        item = NULL;
+    }
 }
