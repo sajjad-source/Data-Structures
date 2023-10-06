@@ -1,14 +1,26 @@
 gcc -Wall -pedantic -std=c11 -ggdb  -I../lib   -c -o settest.o settest.c
-gcc -Wall -pedantic -std=c11 -ggdb  -I../lib   -c -o set.o set.c
 gcc -Wall -pedantic -std=c11 -ggdb  -I../lib settest.o set.o ../lib/file.o ../lib/mem.o  -o settest
 ./settest < test.names
 
 Test with null set, good key/item...
+Test passed
+
 Test with good set, null key...
+Test passed
+
 Test with good set, null item...
-Test with null set, null key...
+Test passed
+
+Test with null set, null key, null item...
+Test passed
 
 Inserting items from input...
+
+Testing inserting a duplicate...
+Test succeeded: Duplicate was not inserted
+
+Testing set find on an existing key...
+Key 'John' was found. The item is: John
 
 Iterating over the set...
 Iterate: John = John
@@ -19,5 +31,5 @@ Iterate: Paul = Paul
 Iterate: Peter = Peter
 
 The set:
-{John=John,Ringo=Ringo,George=George,Mary=Mary,Paul=Paul,Peter=Peter,}
+{John=John,Ringo=Ringo,George=George,Mary=Mary,Paul=Paul,Peter=Peter}
 Deleting the set...

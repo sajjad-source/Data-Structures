@@ -79,21 +79,8 @@ bool set_insert(set_t* set, const char* key, void* item)
         free(new_node);
         return false;                                   // Error duplicating the key
     }
-
-    char* item_dup = malloc(strlen(item) + 1);          // Duplicate the item
-    if (item_dup == NULL)
-    {
-        return false;
-    }
     
-    new_node->item = strcpy(item_dup, item);            // Insert the duplicate item
-    if (new_node->item == NULL)
-    {
-        free(new_node->key);
-        free(new_node);
-        return false;                                   // Error duplicating the item
-    }
-                        
+    new_node->item = item;                              // Insert the duplicate item                
     new_node->next = set->head;                         // Insert new node at the head of the list
     set->head = new_node;
 
@@ -133,14 +120,19 @@ void set_print(set_t* set, FILE* fp, void (*itemprint)(FILE* fp, const char* key
         if (set != NULL)
         {
             fputc('{', fp);
+            bool isFirst = true;
             for (setnode_t* curr = set->head; curr != NULL; curr = curr->next)
             {
+                 if (!isFirst)                  // If it's not the first item, print a comma
+                {
+                    fputc(',', fp);
+                }
                 // Print each key-item pair using the provided itemprint function
                 if (itemprint != NULL)
                 {
                     (*itemprint)(fp, curr->key, curr->item);
-                    fputc(',', fp);
                 }
+                isFirst = false;
             }
             fputc('}', fp);
         } else {

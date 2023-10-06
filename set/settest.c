@@ -28,16 +28,36 @@ int main()
     }
 
     printf("\nTest with null set, good key/item...\n");
-    set_insert(NULL, "Key", "Item");
+    if (!set_insert(NULL, "Key", "Item"))
+    {
+        printf("Test passed\n");
+    } else {
+        printf("Test failed\n");
+    }
 
-    printf("Test with good set, null key...\n");
-    set_insert(set, NULL, "Item");
+    printf("\nTest with good set, null key...\n");
+    if (!set_insert(set, NULL, "Item"))
+    {
+        printf("Test passed\n");
+    } else {
+        printf("Test failed\n");
+    }
 
-    printf("Test with good set, null item...\n");
-    set_insert(set, "Key", NULL);
+    printf("\nTest with good set, null item...\n");
+    if (!set_insert(set, "Key", NULL))
+    {
+        printf("Test passed\n");
+    } else {
+        printf("Test failed\n");
+    }
 
-    printf("Test with null set, null key, null item...\n");
-    set_insert(NULL, NULL, NULL);
+    printf("\nTest with null set, null key, null item...\n");
+    if (!set_insert(NULL, NULL, NULL))
+    {
+        printf("Test passed\n");
+    } else {
+        printf("Test failed\n");
+    }
 
     // Inserting items from input
     printf("\nInserting items from input...\n");
@@ -46,9 +66,30 @@ int main()
         name = file_readLine(stdin);
         if (name != NULL) 
         {
-            set_insert(set, name, name);
-            free(name);
+            if (set_insert(set, name, name))
+            {
+                continue;
+            } else {
+                free(name);
+            }
         }
+    }
+
+    // Inserting duplicate
+    printf("\nTesting inserting a duplicate...\n");
+    if (!set_insert(set, "John", "Duplicate"))
+    {
+        printf("Test succeeded: Duplicate was not inserted\n");
+    } else {
+        printf("Test failed: Duplicate was inserted\n");
+    }
+
+    // Testing find
+    printf("\nTesting set find on an existing key...\n");
+    if (set_find(set, "John") != NULL)
+    {
+        void* item = set_find(set, "John");
+        printf("Key 'John' was found. The item is: %s\n", (char*) item);
     }
 
     // Printing the set
