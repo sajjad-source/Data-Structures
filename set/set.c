@@ -1,5 +1,5 @@
 /* 
- * set.c - CS50 'set' module
+ * set.c - 'set' module
  *
  * see set.h for more information.
  *

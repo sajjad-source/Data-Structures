@@ -1,5 +1,5 @@
 /* 
- * hashtabletest.c - test program for CS50 hashtable module
+ * hashtabletest.c - test program for hashtable module
  *
  * usage: read names from stdin, each on one line
  *

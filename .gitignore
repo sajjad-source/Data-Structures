@@ -1,10 +1,3 @@
-# CS50 recommended .gitignore file.
-# Copy this file into any new git repository, then extend it with
-# repo-specific files to be ignored (such as the name of the compiled binary).
-#
-# for documentation on gitignore files, see
-#   https://git-scm.com/docs/gitignore
-
 # core dumps
 core
 

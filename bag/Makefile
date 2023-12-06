@@ -1,7 +1,4 @@
 # Makefile for 'bag' module
-#
-# David Kotz, April 2016, 2017, 2019, 2021
-# updated by Xia Zhou, July 2016, 2018, January 2019
 
 OBJS = bagtest.o bag.o ../lib/file.o ../lib/mem.o 
 LIBS =

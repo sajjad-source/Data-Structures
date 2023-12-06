@@ -1,5 +1,5 @@
 /* 
- * settest.c - test program for CS50 set module
+ * settest.c - test program for set module
  *
  * usage: read names from stdin, each on one line
  *

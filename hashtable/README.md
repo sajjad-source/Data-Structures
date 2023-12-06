@@ -1,7 +1,4 @@
-# CS50 Lab 3
-## CS50 Fall 2023
-
-### hashtable
+## Hashtable
 
 A `hashtable` is an unordered collection of _key-item_ pairs organized into "buckets" based on `hash` values. This structure enables efficient average-case key-value insertion and retrieval operations.
 

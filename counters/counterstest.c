@@ -1,5 +1,5 @@
 /* 
- * counterstest.c - test program for CS50 counters module
+ * counterstest.c - test program for counters module
  *
  * usage: read integers from stdin, each on one line
  *

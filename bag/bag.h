@@ -1,5 +1,5 @@
 /* 
- * bag.h - header file for CS50 'bag' module
+ * bag.h - header file for 'bag' module
  * 
  * A 'bag' is a collection of indistinguishable items; it starts empty, 
  * grows as the caller adds one item at a time, and shrinks as the caller 
@@ -7,7 +7,6 @@
  * of items. Since items are indistinguishable, the module is free to return
  * any item from the bag. 
  *
- * David Kotz, April 2016, 2017, 2019, 2021
  */
 
 #ifndef __BAG_H

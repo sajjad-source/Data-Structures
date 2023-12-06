@@ -1,5 +1,5 @@
 /* 
- * hashtable.c - CS50 'hashtable' module
+ * hashtable.c - 'hashtable' module
  *
  * see hashtable.h for more information.
  *

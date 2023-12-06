@@ -1,5 +1,5 @@
 /* 
- * set.h - header file for CS50 set module
+ * set.h - header file for set module
  *
  * A *set* maintains an unordered collection of (key,item) pairs;
  * any given key can only occur in the set once. It starts out empty 
@@ -7,8 +7,6 @@
  * can retrieve items by asking for their key, but cannot remove or 
  * update pairs.  Items are distinguished by their key.
  *
- * David Kotz, April 2016, 2017, 2019, 2021
- * updated by Xia Zhou, July 2016
  */
 
 #ifndef __SET_H

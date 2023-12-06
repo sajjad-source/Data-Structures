@@ -1,7 +1,4 @@
-# CS50 Lab 3
-## CS50 Spring 2021
-
-### bag
+## bag
 
 A `bag` is an unordered collection of _items_.
 The `bag` starts empty, grows as the caller adds one _item_ at a time, and shrinks as the caller extracts one _item_ at a time.

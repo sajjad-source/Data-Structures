@@ -1,7 +1,4 @@
-# CS50 Lab 3
-## CS50 Fall 2023
-
-### set
+## Set
 
 A `set` is an unordered collection of _key-item_ pairs.
 The `set` starts empty and allows the caller to add _key-item_ pairs one at a time and retrieve _items_ by their associated _keys_.

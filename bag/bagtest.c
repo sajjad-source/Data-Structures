@@ -1,5 +1,5 @@
 /* 
- * bagtest.c - test program for CS50 bag module
+ * bagtest.c - test program for bag module
  *
  * usage: read names from stdin, each on one line
  *
@@ -7,7 +7,6 @@
  * It does a decent job of testing the module, but is
  * not a complete test; it should test more corner cases.
  *
- * CS50, April 2019, 2021
  */
 
 #include <stdio.h>

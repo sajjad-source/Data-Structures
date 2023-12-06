@@ -1,5 +1,5 @@
 /* 
- * counters.c - CS50 'counters' module
+ * counters.c - 'counters' module
  *
  * see counters.h for more information.
  *

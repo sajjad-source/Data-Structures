@@ -1,5 +1,5 @@
 /* 
- * counters.h - header file for CS50 counters module
+ * counters.h - header file for counters module
  *
  * A "counter set" is a set of counters, each distinguished by an integer key.
  * It's a set - each key can only occur once in the set - but instead of
@@ -8,8 +8,6 @@
  * counter is incremented. The current counter value can be retrieved by
  * asking for the relevant key.
  * 
- * David Kotz, April 2016, 2017, 2019, 2021
- * Xia Zhou, July 2017
  */
 
 #ifndef __COUNTERS_H

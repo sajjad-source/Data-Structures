@@ -1,6 +1,3 @@
-# CS50 Lab 3
-## CS50 Spring 2021
-
 ### lib
 
 This directory contains a little library of useful functions.

@@ -1,7 +1,4 @@
-# CS50 Lab 3
-## CS50 Fall 2023
-
-### counters
+## Counters
 
 A `counters` is a collection that tracks the _count_ associated with each unique _key_. It starts empty, and allows the caller to increment the count for each _key_ or directly set a specific count for a given _key_.
 
